@@ -2,7 +2,7 @@ import React from "react";
 
 const LaunchCard = props => (
   <div className="launch">
-    <img src={props.img} />
+    <img src={props.img} alt={props.alt} />
     <div>
       <h1 className="card_title">{props.title}</h1>
       <p>{props.countdown}</p>

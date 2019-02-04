@@ -1,10 +1,14 @@
 import React from "react";
 
 const LaunchCard = props => (
-  <div>
-    <h3>{props.title}</h3>
-    <p>{props.countdown}</p>
-    <p>{props.location}</p>
+  <div className="launch">
+    <img src={props.img} />
+    <div>
+      <h1 className="card_title">{props.title}</h1>
+      <p>{props.countdown}</p>
+      <p>{props.location}</p>
+      <p>{props.mission_description}</p>
+    </div>
   </div>
 );
 

@@ -6,63 +6,48 @@ import LaunchCard from "./components/LaunchCard";
 
 export default class App extends React.Component {
   state = {
-    name: undefined,
-    time: undefined,
-    location: undefined,
-    launchId: []
+    launches: []
   };
 
-  // componentDidMount() {
-  //   axios.get("https://launchlibrary.net/1.3/launch/1434").then(res => {
-  //     console.log(res.data.launches[0].name);
-  //     // console.log(res.data.launches[0].name);
-  //     let name = res.data.launches[0].name;
-  //     let time = res.data.launches[0].windowstart;
-  //     let location = res.data.launches[0].location.name;
-  //     this.setState({
-  //       name,
-  //       location,
-  //       time
-  //     });
-  //   });
-  // }
+  getLaunches() {
+    const launchIDs = [];
 
-  // componentDidMount() {
-  //   axios.get("https://launchlibrary.net/1.3/launch").then(launches => {
-  //     console.log(launches.data.launches);
-  //   });
-  // }
-
-  componentDidMount() {
-    const rocketLaunches = [];
     axios.get("https://launchlibrary.net/1.3/launch").then(launches => {
-      launches.data.launches.forEach(rockets => {
-        rocketLaunches.push(rockets.id);
-        // console.log(rocketLaunches);
+      launches.data.launches.forEach(launch => {
+        launchIDs.push(launch.id);
       });
-      rocketLaunches.forEach(rocketDetails => {
+
+      launchIDs.forEach(launchID => {
         axios
-          .get("https://launchlibrary.net/1.3/launch/" + rocketDetails)
-          .then(launchDetails => {
-            let rocketData = launchDetails.data.launches;
+          .get("https://launchlibrary.net/1.3/launch/" + launchID)
+          .then(launchDetail => {
+            let launchDataObject = launchDetail.data.launches[0];
+
             this.setState({
-              launchId: [...this.state.launchId, rocketData]
+              launches: [...this.state.launches, launchDataObject]
             });
           });
       });
     });
   }
 
+  componentWillMount() {
+    this.getLaunches();
+  }
+
   render() {
-    console.log(this.state.launchId[0]);
+    console.log(this.state.launches);
     return (
       <div>
         <Header />
-        <LaunchCard
-          title={this.state.name}
-          countdown={this.state.time}
-          location={this.state.location}
-        />
+        {this.state.launches.map(launch => (
+          <LaunchCard
+            title={launch.name}
+            img={launch.rocket.imageURL}
+            countdown={launch.net}
+            location={launch.location.name}
+          />
+        ))}
       </div>
     );
   }

@@ -53,22 +53,8 @@ export default class App extends React.Component {
     });
   }
 
-  // rocketLaunch = () => {
-  //   axios.get("https://launchlibrary.net/1.3/launch").then(launches => {
-  //     launches.data.launches.forEach(function(rockets) {
-  //       console.log(rockets);
-  //       this.setState({
-  //         launchId: [rockets]
-  //       });
-  //       console.log(this.state.launchId);
-  //     });
-  //   });
-  // };
-
   render() {
-    const json = this.state.launchId[0];
-    console.log(json);
-    // console.log(this.state.launchId[0]);
+    console.log(this.state.launchId[0]);
     return (
       <div>
         <Header />

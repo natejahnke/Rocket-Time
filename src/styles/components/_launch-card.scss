@@ -1,21 +1,33 @@
+.thumbnail-container {
+  // position: relative;
+  max-width: 178px;
+  height: 300px;
+}
+
 img {
-  height: 280px;
-  border-radius: 3px;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card_title {
   margin: 0;
   padding: 0 10px;
   color: white;
-  font-size: $l-size;
+  font-size: 20px;
+  text-align: left;
 }
 
 p {
   padding: 0 10px;
   color: white;
+  font-size: 12px;
 }
 
 .launch {
+  height: 300px;
+
   display: flex;
   // max-width: 1000px;
   border: solid 1px black;

@@ -27,6 +27,7 @@ export default class App extends React.Component {
               launches: [...this.state.launches, launchDataObject]
             });
           });
+        console.log(launchIDs);
       });
     });
   }
@@ -42,19 +43,21 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        {this.state.launches.map(launch => (
-          <LaunchCard
-            key={launch.id}
-            title={launch.name}
-            img={launch.rocket.imageURL}
-            alt={launch.rocket.name}
-            countdown={launch.net}
-            location={launch.location.name}
-            mission_description={
-              launch.missions[0] ? launch.missions[0].description : null
-            }
-          />
-        ))}
+        <div className='container'>
+          {this.state.launches.map(launch => (
+            <LaunchCard
+              key={launch.id}
+              title={launch.name}
+              img={launch.rocket.imageURL}
+              alt={launch.rocket.name}
+              countdown={launch.net}
+              location={launch.location.name}
+              // mission_description={
+              //   launch.missions[0] ? launch.missions[0].description : null
+              // }
+            />
+          ))}
+        </div>
       </div>
     );
   }

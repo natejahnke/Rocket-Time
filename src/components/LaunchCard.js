@@ -1,11 +1,14 @@
 import React from 'react';
+import Countdown from './Countdown';
 
 const LaunchCard = props => (
   <div className='launch'>
-    <img src={props.img} alt={props.alt} />
+    <div className='thumbnail-container'>
+      <img src={props.img} alt={props.alt} />
+    </div>
     <div>
       <h1 className='card_title'>{props.title}</h1>
-      <p>{props.countdown}</p>
+      <Countdown date={props.countdown} />
       <p>{props.location}</p>
       <p>{props.mission_description}</p>
     </div>

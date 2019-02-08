@@ -1,5 +1,9 @@
-@import "./base/settings";
-@import "./base/base";
-@import "./components/_app";
-@import "./components/header";
-@import "./components/launch-card";
+@import './abstracts/variables';
+@import './abstracts/functions';
+@import './abstracts/mixins';
+@import './base/fonts';
+@import './base/base';
+@import './components/app';
+@import './components/header';
+@import './components/launch-card';
+@import './vendors/normalize';
